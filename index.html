@@ -100,23 +100,43 @@
             <label for="quantity">Количество:</label>
             <input type="number" id="quantity" value="1" min="1">
         </div>
+        <div>
+            <label for="price">Цена за единицу:</label>
+            <span id="price">600</span> руб.
+        </div>
+        <div>
+            <label for="total">Общая стоимость:</label>
+            <span id="total">600</span> руб.
+        </div>
         <button id="buy" class="add-to-cart">Купить</button>
     </div>
 
     <script>
         let tg = window.Telegram.WebApp;
         let buy = document.getElementById("buy");
+        let quantityInput = document.getElementById("quantity");
+        let priceElement = document.getElementById("price");
+        let totalElement = document.getElementById("total");
+        let price = 600; // Цена за единицу
+
+        quantityInput.addEventListener("input", () => {
+            let quantity = parseInt(quantityInput.value);
+            let total = quantity * price;
+            totalElement.textContent = total;
+        });
 
         buy.addEventListener("click", () => {
             let quantity = document.getElementById("quantity").value;
+            let total = quantity * price;
             let data = {
                 product: "Льняное сыродавленное масло 100 мл",
-                quantity: quantity
+                quantity: quantity,
+                total: total
             };
             tg.sendData(JSON.stringify(data));
             setTimeout(() => {
                 tg.close();
-            }, 1000);
+            }, 100);
         });
     </script>
 </body>
