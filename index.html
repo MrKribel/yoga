@@ -109,10 +109,12 @@
 
         buy.addEventListener("click", () => {
             let quantity = document.getElementById("quantity").value;
-            tg.sendData(JSON.stringify({
+            let data = {
                 product: "Льняное сыродавленное масло 100 мл",
                 quantity: quantity
-            }));
+            };
+            tg.sendData(JSON.stringify(data));
+            console.log("Data sent:", data); // Добавляем логирование в консоль
             setTimeout(() => {
                 tg.close();
             }, 1000); // Добавляем задержку в 1 секунду перед закрытием окна
