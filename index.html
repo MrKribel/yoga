@@ -125,7 +125,7 @@
         });
 
         buy.addEventListener("click", () => {
-            let quantity = document.getElementById("quantity").value;
+            let quantity = parseInt(quantityInput.value);
             let total = quantity * price;
             let data = {
                 product: "Льняное сыродавленное масло 100 мл",
