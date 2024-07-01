@@ -103,14 +103,14 @@
 <body>
     <div class="product">
         <img src="img/1.jpg" alt="Product 1" id="product-image">
-        <h2>Подсолнечное сыродавленное масло 100 мл</h2>
+        <h2>Подсолнечное сыродавленное масло 250 мл</h2>
         <div class="quantity">
             <label for="quantity">Количество:</label>
             <input type="number" id="quantity" value="1" min="1">
         </div>
         <div class="price-quantity">
             <label for="total">Цена:</label>
-            <span id="total">500</span> руб.
+            <span id="total">700</span> руб.
         </div>
         <button id="buy" class="add-to-cart">Купить</button>
         <div class="description" id="description">
@@ -133,7 +133,7 @@
         quantityInput.addEventListener("input", () => {
             let quantity = parseInt(quantityInput.value);
             if (isNaN(quantity) || quantity === 0) {
-                totalElement.textContent = 500;
+                totalElement.textContent = 700;
             } else {
                 let total = quantity * price;
                 totalElement.textContent = total;
@@ -144,10 +144,10 @@
             let quantity = parseInt(quantityInput.value);
             let total = quantity * price;
             if (isNaN(quantity) || quantity === 0) {
-                total = 500;
+                total = 700;
             }
             let data = {
-                product: "Подсолнечное сыродавленное масло 100 мл",
+                product: "Подсолнечное сыродавленное масло 250 мл",
                 quantity: quantity,
                 total: total
             };
