@@ -62,10 +62,20 @@
             color: var(--tg-theme-button-text-color);
             background: var(--tg-theme-button-color);
             transition: background 0.3s, transform 0.3s;
+            margin-top: 20px; /* Добавляем отступ над кнопкой */
         }
         .add-to-cart:hover {
             background: var(--tg-theme-hint-color);
             transform: scale(1.05); /* Добавляем анимацию при наведении */
+        }
+        .price-quantity {
+            font-size: 16px; /* Приводим цену и количество к одному шрифту и размеру */
+        }
+        .description {
+            display: none;
+            margin-top: 20px;
+            font-size: 14px;
+            color: var(--tg-theme-hint-color);
         }
         @media (max-width: 600px) {
             body {
@@ -93,17 +103,20 @@
 </head>
 <body>
     <div class="product">
-        <img src="img/1.jpg" alt="Product 1">
+        <img src="img/1.jpg" alt="Product 1" id="product-image">
         <h2>Льняное сыродавленное масло 100 мл</h2>
         <div class="quantity">
             <label for="quantity">Количество:</label>
             <input type="number" id="quantity" value="1" min="1">
         </div>
-        <div>
+        <div class="price-quantity">
             <label for="total">Цена:</label>
             <span id="total">600</span> руб.
         </div>
         <button id="buy" class="add-to-cart">Купить</button>
+        <div class="description" id="description">
+            Льняное масло — это растительное масло, получаемое из семян льна. Оно богато омега-3 жирными кислотами, которые полезны для сердца и мозга.
+        </div>
     </div>
 
     <script>
@@ -112,6 +125,8 @@
         let quantityInput = document.getElementById("quantity");
         let totalElement = document.getElementById("total");
         let price = 600; // Цена за единицу
+        let description = document.getElementById("description");
+        let productImage = document.getElementById("product-image");
 
         quantityInput.addEventListener("input", () => {
             let quantity = parseInt(quantityInput.value);
@@ -132,7 +147,10 @@
                 tg.close();
             }, 100);
         });
+
+        productImage.addEventListener("swipe", () => {
+            description.style.display = "block";
+        });
     </script>
 </body>
 </html>
-
