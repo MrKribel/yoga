@@ -67,7 +67,6 @@
             background: var(--tg-theme-hint-color);
             transform: scale(1.05); /* Добавляем анимацию при наведении */
         }
-
         @media (max-width: 600px) {
             body {
                 padding: 5px;
@@ -94,19 +93,15 @@
 </head>
 <body>
     <div class="product">
-        <img src="img/1.jpg" alt="Product 4">
-        <h2>Подсолнечное масло 250 мл</h2>
+        <img src="img/1.jpg" alt="Product 1">
+        <h2>Льняное сыродавленное масло 100 мл</h2>
         <div class="quantity">
             <label for="quantity">Количество:</label>
             <input type="number" id="quantity" value="1" min="1">
         </div>
         <div>
-            <label for="price">Цена за единицу:</label>
-            <span id="price">700</span> руб.
-        </div>
-        <div>
-            <label for="total">Общая стоимость:</label>
-            <span id="total">700</span> руб.
+            <label for="total">Цена:</label>
+            <span id="total">600</span> руб.
         </div>
         <button id="buy" class="add-to-cart">Купить</button>
     </div>
@@ -115,9 +110,8 @@
         let tg = window.Telegram.WebApp;
         let buy = document.getElementById("buy");
         let quantityInput = document.getElementById("quantity");
-        let priceElement = document.getElementById("price");
         let totalElement = document.getElementById("total");
-        let price = 700; // Цена за единицу
+        let price = 600; // Цена за единицу
 
         quantityInput.addEventListener("input", () => {
             let quantity = parseInt(quantityInput.value);
@@ -126,10 +120,10 @@
         });
 
         buy.addEventListener("click", () => {
-            let quantity = document.getElementById("quantity").value;
+            let quantity = parseInt(quantityInput.value);
             let total = quantity * price;
             let data = {
-                product: "Подсолнечное масло 250 мл",
+                product: "Льняное сыродавленное масло 100 мл",
                 quantity: quantity,
                 total: total
             };
@@ -141,3 +135,4 @@
     </script>
 </body>
 </html>
+
